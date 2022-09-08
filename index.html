@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./bootstrap-5.2.0-dist/css/bootstrap.min.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <main class="movies">
+    <section class="movies__header header">
+      <div class="container-fluid header__container">
+        <div class="header__inner d-flex align-items-center justify-content-around p-3">
+          <h1 class="header__title h1 font-monospace">
+            Movies
+          </h1>
+
+          <form class="header__search-form search-form d-flex align-items-center w-50" id="search-movies"
+            action="https://echo.htmlacademy.ru">
+            <input class="header__input-search js-form-input-search form-control w-75 me-1" name="search" type="search"
+              placeholder="Enter a request">
+
+            <button type="submit" class="header__button-search btn btn-light ms-2">
+              <img src="./img/search.svg" alt="search" width="25" height="25">
+            </button>
+          </form>
+
+          <div class="header__bookmark">
+            <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight">
+              <img src="./img/bookmark-check.svg" alt="bookmark" width="50" height="30">
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+              aria-labelledby="offcanvasRightLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Saved Movies</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <hr>
+              <ul class="header__bookmer-list offcanvas-body">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero p-3">
+      <div class="container-fluid hero__container">
+        <div class="hero__inner row">
+          <div class="hero__start-content col-3">
+            <div class="hero__category">
+              <select class="hero__select-category js-form-select-category form-select" form="search-movies"
+                name="select" aria-label="Default select example">
+                <option value="All" selected hidden>Category</option>
+              </select>
+            </div>
+
+            <div class="hero__rayting">
+              <input class="my-3 form-control js-rayting-form" form="search-movies" name="min_rating" type="number"
+                step="any" placeholder="7.5" value="6">
+            </div>
+
+            <div class="hero__sort">
+              <select class="hero__select-sort js-form-sort form-select" form="search-movies" name="rayting"
+                aria-label="Default select example">
+                <option selected hidden>Various sorting</option>
+                <option value="A-Z">A-Z</option>
+                <option value="Z-A">Z-A</option>
+                <option value="0-10">0-10</option>
+                <option value="10-0">10-0</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="hero__end-content col-9">
+            <ul class="movie-list d-flex justify-content-around flex-wrap list-unstyled">
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title js-modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body js-modal-summery">
+        </div>
+        <a class="js-modal-link ms-2" href="">Link</a>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <template id="movies-template">
+    <li class="js-results-item card p-3 my-2" style="width: 18rem; height: 28rem;">
+      <img src="./img/bookmark-check.svg" class="js-img-card card-img-top" alt="..." width="130" height="200">
+      <div class="card-body">
+        <h5 class="card-title text-center mb-3">Card title</h5>
+        <strong class="js-rayting d-block">7.5</strong>
+        <strong class="js-year d-block">2020</strong>
+        <a class="ja-link d-block my-2" href=""> Link</a>
+
+        <div class="hero__buttons d-flex justify-content-around mt-3">
+          <button type="button" class="btn btn-light">
+            <img src="./img/bookmark-check.svg" alt="search" width="33" height="33">
+          </button>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-secondary js-modal-button" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">
+            Info
+          </button>
+        </div>
+
+      </div>
+    </li>
+  </template>
+
+  <script src="./bootstrap-5.2.0-dist/js/bootstrap.min.js"></script>
+  <script src="./js/movies.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
